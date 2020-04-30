@@ -29,6 +29,7 @@
       <div class="op_panel">
         <div class="op_bar"><span class="white op_title">新建线路</span>
           <span v-bind:class="{'op_button new op_button_inactive': edit_op, 'op_button new op_button_active': !edit_op}" v-on:click="createNewLine()">新建</span>
+          <span v-bind:class="{'op_button undo op_button_inactive': stack.length < 1, 'op_button undo op_button_active': stack.length > 0}" v-on:click="undo()">撤销</span>
           <span v-bind:class="{'op_button add op_button_inactive op_button_disable': !edit_op, 'op_button add op_button_active': edit_op}" v-on:click="saveLine()">保存</span>
         </div>
         <div class="op_content">
@@ -40,33 +41,33 @@
           </el-row>
           <el-row style="padding: 0 5px; margin-top:13px;">
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 0 || !edit_op, 'op_bgc_selected': op_type == 0 && edit_op}" v-on:click="drawLine()">
-                <div v-bind:class="{'op_icon line_active': op_type == 0 && edit_op, 'op_icon line_disable': !edit_op, 'op_icon line': op_type != 0 && edit_op}"></div>
+              <div title="绘制线路" v-bind:class="{'op_bgc': op_type != 0 || !edit_op, 'op_bgc_selected': op_type == 0 && edit_op}" v-on:click="drawLine()">
+                <div title="绘制线路" v-bind:class="{'op_icon line_active': op_type == 0 && edit_op, 'op_icon line_disable': !edit_op, 'op_icon line': op_type != 0 && edit_op}"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 1 || !edit_op, 'op_bgc_selected': op_type == 1 && edit_op}" v-on:click="drawCircle()">
-                <div v-bind:class="{'op_icon circle_active': op_type == 1 && edit_op, 'op_icon circle_disable': !edit_op, 'op_icon circle': op_type != 1 && edit_op}"></div>
+              <div title="新建站点" v-bind:class="{'op_bgc': op_type != 1 || !edit_op, 'op_bgc_selected': op_type == 1 && edit_op}" v-on:click="drawCircle()">
+                <div title="新建站点" v-bind:class="{'op_icon circle_active': op_type == 1 && edit_op, 'op_icon circle_disable': !edit_op, 'op_icon circle': op_type != 1 && edit_op}"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 2 || !edit_op, 'op_bgc_selected': op_type == 2 && edit_op}" v-on:click="viewMap()">
-                <div v-bind:class="{'op_icon move_active': op_type == 2 && edit_op, 'op_icon move_disable': !edit_op, 'op_icon move': op_type != 2 && edit_op}"></div>
+              <div title="预览线路" v-bind:class="{'op_bgc': op_type != 2 || !edit_op, 'op_bgc_selected': op_type == 2 && edit_op}" v-on:click="viewMap()">
+                <div title="预览线路" v-bind:class="{'op_icon move_active': op_type == 2 && edit_op, 'op_icon move_disable': !edit_op, 'op_icon move': op_type != 2 && edit_op}"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 3 || !edit_op, 'op_bgc_selected': op_type == 3 && !edit_op}" v-on:click="editMap()">
-                <div v-bind:class="{'op_icon edit_active': op_type == 3 && !edit_op, 'op_icon edit_disable': (edit_op || (op_type != 3 && !edit_op)), 'op_icon edit': op_type != 3 && (op_type == 2)}"></div>
+              <div title="编辑线路" v-bind:class="{'op_bgc': op_type != 3 || !edit_op, 'op_bgc_selected': op_type == 3 && !edit_op}" v-on:click="editMap()">
+                <div title="编辑线路" v-bind:class="{'op_icon edit_active': op_type == 3 && !edit_op, 'op_icon edit_disable': (edit_op || (op_type != 3 && op_type != 2 && !edit_op)), 'op_icon edit': op_type != 3 && (op_type == 2)}"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 4 || !edit_op, 'op_bgc_selected':  op_type == 4 && (edit_op || op_type == 3)}" v-on:click="zoomOut()">
-                <div v-bind:class="{'op_icon shrink_active': op_type == 4 && (edit_op || op_type == 3), 'op_icon shrink': op_type != 4 }"></div>
+              <div title="缩小地图" v-bind:class="{'op_bgc': op_type != 4 || !edit_op, 'op_bgc_selected':  op_type == 4 && (edit_op || op_type == 3)}" v-on:click="zoomOut()">
+                <div title="缩小地图" v-bind:class="{'op_icon shrink_active': op_type == 4 && (edit_op || op_type == 3), 'op_icon shrink': op_type != 4 }"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 5 || !edit_op, 'op_bgc_selected': op_type == 5 && (edit_op || op_type == 3)}" v-on:click="zoomIn()">
-                <div v-bind:class="{'op_icon magnify_active': op_type == 5 && (edit_op || op_type == 3), 'op_icon magnify': op_type != 5 }"></div>
+              <div title="放大地图" v-bind:class="{'op_bgc': op_type != 5 || !edit_op, 'op_bgc_selected': op_type == 5 && (edit_op || op_type == 3)}" v-on:click="zoomIn()">
+                <div title="放大地图" v-bind:class="{'op_icon magnify_active': op_type == 5 && (edit_op || op_type == 3), 'op_icon magnify': op_type != 5 }"></div>
               </div>
             </el-col>
           </el-row>
@@ -75,7 +76,7 @@
       <div id="station_panel" class="op_station" v-show="show_station">
         <div class="white edit_title">
           <span class="title_name">站点属性</span>
-          <span v-bind:class="{'op_button station_confirm op_button_inactive': (station_name == '' || station_type == ''), 'op_button station_confirm op_button_active': (station_name != '' && station_type != '') }" v-on:click="addNewStation">确认</span>
+          <span v-bind:class="{'op_button station_confirm op_button_inactive': (station_name == '' || station_type == '' || current_station == null), 'op_button station_confirm op_button_active': (station_name != '' && station_type != '') && (current_station != null)}" v-on:click="addNewStation">确认</span>
         </div>
         <span class="name_label">名称</span>
         <el-input class="station_input" v-model="station_name"></el-input>
@@ -90,7 +91,9 @@
         </el-select>
       </div>
       <div class="white effect_panel">
-        <div class="effect_title"><span class="white op_title">成本测算</span></div>
+        <div class="effect_title"><span class="white op_title">成本测算</span>
+          <span v-bind:class="{'op_button add op_button_inactive op_button_disable': !edit_op, 'op_button add op_button_active': edit_op}" v-on:click="saveLine()">计算</span>
+        </div>
         <div class="form">
           <div class="odd">
             <div class="left">
@@ -100,7 +103,7 @@
               <span class="label">车辆数</span>
             </div>
             <div class="right">
-              <span class="label">增加成本（万元/每车）</span>
+              <span class="label">车辆成本（万元/每车每年）</span>
             </div>
           </div>
           <div class="even">
@@ -122,7 +125,7 @@
               <span class="label">人员数</span>
             </div>
             <div class="right">
-              <span class="label">平均成本（万元/每人）</span>
+              <span class="label">平均成本（万元/每人每年）</span>
             </div>
           </div>
           <div class="even">
@@ -186,22 +189,22 @@
         </div>
         <div class="form">
           <div class="odd">
-            <div class="left">
-              <span class="label">有效覆盖范围</span>
+            <div class="left" style="width: 35%">
+              <span class="label">有效覆盖范围(平方千米)</span>
             </div>
             <div class="middle">
             </div>
-            <div class="right">
+            <div class="right" style="width: 20%">
               <span class="label">{{valid_range}}</span>
             </div>
           </div>
           <div class="even">
-            <div class="left">
-              <span class="label">人口数量</span>
+            <div class="left" style="width: 35%">
+              <span class="label">人口数量(万人)</span>
             </div>
             <div class="middle">
             </div>
-            <div class="right">
+            <div class="right" style="width: 20%">
               <span class="label">{{population}}</span>
             </div>
           </div>
@@ -275,13 +278,13 @@
         station_cost: 0, //站点总成本
         total_cost: 0, //总计总成本
         vehicle_num: 0, //车辆数量
-        vehicle_extra_cost: 0, //额外车辆数量
+        vehicle_extra_cost: 12, //额外车辆成本
         staff_num: 0, //人员数量
-        staff_mean_cost: 0, //人员平均成本
+        staff_mean_cost: 10, //人员平均成本
         station_type_num: [0, 0], //站点类型数量
-        station_type_cost: [0, 0], //站点类型成本
-        valid_range: '',  //有效覆盖范围
-        population: '', //人口数量
+        station_type_cost: [20, 40], //站点类型成本
+        valid_range: 0,  //有效覆盖范围
+        population: 0, //人口数量
         poi_num: 0, //POI总计数量
         poi_list: [ //POI详情
             {
@@ -315,7 +318,8 @@
             '../../../static/icon/poi/hospital.png',
             '../../../static/icon/poi/house.png'
         ],
-        amap: null
+        amap: null,
+        stack: []
       }
     },
     mounted(){
@@ -335,6 +339,48 @@
       that.map.on('zoomend', that.justifyHex);
     },
     methods:{
+      //撤销操作
+      undo(){
+          let that = this;
+          if(that.stack.length < 1) return;
+          else{
+              let op = that.stack.pop();
+              //线路
+              if(op.type == 0){
+                  that.points.pop();
+                  that.paths.pop();
+                  that.lines.pop();
+                  that.layer_point.setData(that.points, {
+                      type: 'json',
+                      lnglat: 'center'
+                  });
+                  that.layer_point.render();
+                  that.layer_line.setData(that.lines, {
+                      lnglat: 'line'
+                  });
+                  that.layer_line.render();
+              }
+              //站点
+              else{
+                  that.stations.pop();
+                  that.stations_info.pop();
+                  that.layer_station.setData(that.stations, {
+                      type: 'json',
+                      lnglat: 'center'
+                  });
+                  that.layer_station.render();
+                  that.station_name = '';
+                  that.station_type = '';
+              }
+          }
+      },
+      stackPush(type){
+          let that = this;
+          if(that.stack.length == 5){
+              that.stack.splice(0, 1);
+          }
+          that.stack.push({type: type});
+      },
       //缩小地图
       zoomOut(){
         let that = this;
@@ -379,6 +425,7 @@
           //若该站点不存在，则添加到已有站点里
           if(index == -1){
               that.stations_info.push({"center": that.current_station, "name": that.station_name, "type": that.station_type});
+              that.stackPush(1);
           }
           //否则读取该站点信息
           else{
@@ -386,8 +433,6 @@
           }
           //站点信息清空
           that.current_station = null;
-          that.station_name = '';
-          that.station_type = '';
       },
       //根据非按钮进行的地图缩放调整六边形网格
       justifyHex(e){
@@ -426,13 +471,13 @@
           that.station_cost = 0;
           that.total_cost = 0;
           that.vehicle_num = 0;
-          that.vehicle_extra_cost = 0;
+          that.vehicle_extra_cost = 12;
           that.staff_num = 0;
-          that.staff_mean_cost = 0;
+          that.staff_mean_cost = 10;
           that.station_type_num = [0, 0];
-          that.station_type_cost = [0, 0];
-          that.valid_range = '';
-          that.population = '';
+          that.station_type_cost = [20, 40];
+          that.valid_range = 0;
+          that.population = 0;
           that.poi_num = 0;
           that.poi_list = [{type: "公共设施", num: 0, detail: []}, {type: "学校", num: 0, detail: []},
               {type: "医院", num: 0, detail: []}, {type: "小区", num: 0, detail: []}];
@@ -447,6 +492,7 @@
           that.show_station = false;
           that.station_type = '';
           that.current_station = null;
+          that.stack = [];
           if(that.amap != null) that.amap = null;
           if(that.layer_base != null) that.layer_base = null;
           if(that.layer_station != null) that.layer_station = null;
@@ -511,30 +557,18 @@
           }
           else{
             //从载入线路接口判断是否已有同名同方向线路，如果有，建议用户进入编辑模式
-            let is_exist = that.isExist();
-            if(is_exist){
+            that.clearData();
+            that.edit_op = true;
+            that.op_type = 0;
+            if(that.map.getZoom() > 12){
+                that.drawHexagon();
+            }
+            else{
                 that.$message({
                     showClose: true,
-                    message: '已存在该线路，若要修改，请点击编辑',
-                    type: 'error'
+                    message: '放大地图以进行操作',
+                    type: 'warning'
                 });
-                return;
-            }
-            //没有该线路，则清空数据，绘制底图
-            else{
-                that.clearData();
-                that.edit_op = true;
-                that.op_type = 0;
-                if(that.map.getZoom() > 12){
-                    that.drawHexagon();
-                }
-                else{
-                    that.$message({
-                        showClose: true,
-                        message: '放大地图以进行操作',
-                        type: 'warning'
-                    });
-                }
             }
           }
         }
@@ -693,6 +727,7 @@
                 if(that.map.lngLatToContainer(rawData.center).y > 50 && that.map.lngLatToContainer(rawData.center).x > 100){
                     that.points.push(rawData);
                     that.paths.push(rawData.center);
+                    that.stackPush(0);
                 }
                 //重新渲染途径点和线的图层
                 that.layer_point.setData(that.points, {
@@ -788,6 +823,7 @@
         }
         let each_station_cost = [];
         //统计每个站点类型的站点数
+        that.station_type_num = [0, 0];
         for(let i = 0; i < that.stations_info.length; i++){
             that.station_type_num[that.stations_info[i].type - 1] += 1;
         }
@@ -795,45 +831,69 @@
         for(let i = 0; i < that.station_types.length; i++){
             each_station_cost.push({"type": that.station_types[i].type, "cost": that.station_type_cost[i], "num": that.station_type_num[i]})
         }
-
         that.poi_select = [false, false, false, false];
         that.poi_group = [null, null, null, null];
-
+        that.poi_list = [
+          {
+              type: "公共设施",
+              num: 0,
+              detail: []
+          },
+          {
+              type: "学校",
+              num: 0,
+              detail: []
+          },
+          {
+              type: "医院",
+              num: 0,
+              detail: []
+          },
+          {
+              type: "小区",
+              num: 0,
+              detail: []
+          }
+        ];
+        that.poi_num = 0;
         //poi search
-        AMap.plugin(["AMap.PlaceSearch"], function() {
-            //构造地点查询类，查询每个站点每一类的POI数
-            for(let i = 0; i < that.stations_info.length; i++){
-                for(let j = 0; j < that.types.length; j++){
-                    let placeSearch = new AMap.PlaceSearch({
-                        type: that.types[j], // 兴趣点类别
-                        pageSize: 50, // 单页显示结果条数
-                        pageIndex: 1, // 页码
-                        city: "苏州", // 兴趣点城市
-                        citylimit: true,  //是否强制限制在设置的城市内搜索
-                        //map: that.map, // 展现结果的地图实例
-                        autoFitView: false, // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
-                        showCover: false
-                    });
-                    let cpoint = that.stations_info[i].center; //中心点坐标
-                    placeSearch.searchNearBy(that.keywords[j], cpoint, 500, function(status, result) {
-                        if(status == "complete"){
-                          let res = result.poiList.pois;
-                          for(let k = 0; k < res.length; k++){
-                              that.poi_num += 1;
-                              that.poi_list[j].num += 1;
-                              that.poi_list[j].detail.push({"name": res[k].name, "location": [res[k].location.lng, res[k].location.lat]});
-                          }
+        //构造地点查询类，查询每个站点每一类的POI数
+        for(let i = 0; i < that.stations_info.length; i++){
+            for(let j = 0; j < that.types.length; j++){
+                let placeSearch = new AMap.PlaceSearch({
+                    type: that.types[j], // 兴趣点类别
+                    pageSize: 50, // 单页显示结果条数
+                    pageIndex: 1, // 页码
+                    city: "苏州", // 兴趣点城市
+                    citylimit: true,  //是否强制限制在设置的城市内搜索
+                    //map: that.map, // 展现结果的地图实例
+                    autoFitView: false, // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
+                    showCover: false
+                });
+                let cpoint = that.stations_info[i].center; //中心点坐标
+                placeSearch.searchNearBy(that.keywords[j], cpoint, 500, function(status, result) {
+                    if(status == "complete"){
+                        let res = result.poiList.pois;
+                        for(let k = 0; k < res.length; k++){
+                            that.poi_num += 1;
+                            that.poi_list[j].num += 1;
+                            that.poi_list[j].detail.push({"name": res[k].name, "location": [res[k].location.lng, res[k].location.lat]});
                         }
-                    });
 
-                }
+                    }
+                });
             }
-        });
+        }
         //save line name, line direction and latitude of line
-
         if(that.edit_op){
-            /*
-            this.$http.get('http://118.25.99.80:9001/new_line/create',
+          if(that.vehicle_num == 0){
+              that.vehicle_num = that.stations.length - 1;
+          }
+          if(that.staff_num == 0){
+              that.staff_num = 2 * (that.stations.length - 1);
+          }
+          setTimeout(function(){
+            that.$http.get('http://118.25.99.80:9001/emulation/create',
                 {
                     params: {
                         line_name: that.line_name,
@@ -842,29 +902,21 @@
                         vehicle_extra_cost: that.vehicle_extra_cost,
                         staff_num: that.staff_num,
                         staff_mean_cost: that.staff_mean_cost,
-                        each_station_cost: each_station_cost,
-                        stations: that.stations_info,
-                        paths: that.paths
+                        each_station_cost: JSON.stringify(each_station_cost),
+                        stations: JSON.stringify(that.stations_info),
+                        paths: JSON.stringify(that.paths),
+                        POI: JSON.stringify(that.poi_list)
                     }
                 }).then(function (res){
-               that.station_cost = res.data.station_cost;
-               that.total_cost = res.data.total_cost;
-               that.valid_range = res.data.coverage;
-               that.population = res.data.population;
-               for(let i = 0; i < res.data.POI.length; i++){
-                  if(that.poi_type == res.data.POI[i].type){
-                    that.poi_num = res.data.POI[i].num;
-                  }
-               }
+                that.station_cost = res.data.station_cost;
+                that.total_cost = res.data.total_cost;
+                that.valid_range = (res.data.coverage / 1000000).toFixed(2);
+                that.population = (res.data.population / 10000).toFixed(2);
             }, function(){
-               console.log('请求发送失败');
+                console.log('请求发送失败');
             });
-           */
-          that.line_name = '';
-          that.line_direction = '';
-          that.edit_op = false;
+          }, 3000);
           that.hideStationInput();
-          that.layer_base.destroy();
         }
         that.op_type = -1;
       },
@@ -1005,12 +1057,17 @@
 .new{
   position: absolute;
   top: 6px;
-  right: 90px;
+  right: 170px;
 }
 .add{
   position: absolute;
   top: 6px;
   right: 10px;
+}
+.undo{
+  position: absolute;
+  top: 6px;
+  right: 90px;
 }
 .op_content{
   width: 400px;

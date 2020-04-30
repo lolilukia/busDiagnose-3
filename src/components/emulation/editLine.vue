@@ -40,45 +40,45 @@
           </el-row>
           <el-row style="padding: 0 5px; margin-top:13px;">
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 0 || !modify_op, 'op_bgc_selected': op_type == 0 && modify_op}" v-on:click="drawLine()">
-                <div v-bind:class="{'op_icon line_active': op_type == 0 && modify_op, 'op_icon line_disable': !modify_op, 'op_icon line': op_type != 0 && modify_op}"></div>
+              <div title="绘制线路" v-bind:class="{'op_bgc': op_type != 0 || !modify_op, 'op_bgc_selected': op_type == 0 && modify_op}" v-on:click="drawLine()">
+                <div title="绘制线路" v-bind:class="{'op_icon line_active': op_type == 0 && modify_op, 'op_icon line_disable': !modify_op, 'op_icon line': op_type != 0 && modify_op}"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 1 || !modify_op, 'op_bgc_selected': op_type == 1 && modify_op}" v-on:click="drawCircle()">
-                <div v-bind:class="{'op_icon circle_active': op_type == 1 && modify_op, 'op_icon circle_disable': !modify_op, 'op_icon circle': op_type != 1 && modify_op}"></div>
+              <div title="编辑站点" v-bind:class="{'op_bgc': op_type != 1 || !modify_op, 'op_bgc_selected': op_type == 1 && modify_op}" v-on:click="drawCircle()">
+                <div title="编辑站点" v-bind:class="{'op_icon circle_active': op_type == 1 && modify_op, 'op_icon circle_disable': !modify_op, 'op_icon circle': op_type != 1 && modify_op}"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 2 || !modify_op, 'op_bgc_selected': op_type == 2 && modify_op}" v-on:click="viewMap()">
-                <div v-bind:class="{'op_icon move_active': op_type == 2 && modify_op, 'op_icon move_disable': !modify_op, 'op_icon move': op_type != 2 && modify_op}"></div>
+              <div title="预览线路" v-bind:class="{'op_bgc': op_type != 2 || !modify_op, 'op_bgc_selected': op_type == 2 && modify_op}" v-on:click="viewMap()">
+                <div title="预览线路" v-bind:class="{'op_icon move_active': op_type == 2 && modify_op, 'op_icon move_disable': !modify_op, 'op_icon move': op_type != 2 && modify_op}"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 3 || !modify_op, 'op_bgc_selected': op_type == 3 && !modify_op}" v-on:click="editMap()">
-                <div v-bind:class="{'op_icon edit_active': op_type == 3 && !modify_op, 'op_icon edit_disable': (modify_op || (op_type != 3 && !modify_op)), 'op_icon edit': op_type != 3 && (op_type == 2)}"></div>
+              <div title="编辑线路" v-bind:class="{'op_bgc': op_type != 3, 'op_bgc_selected': op_type == 3}" v-on:click="editMap()">
+                <div title="编辑线路" v-bind:class="{'op_icon edit_active': op_type == 3 && !modify_op, 'op_icon edit_disable': (modify_op || (op_type != 3 && op_type != 2 && !modify_op)), 'op_icon edit': op_type != 3 && (op_type == 2)}"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 4 || !modify_op, 'op_bgc_selected':  op_type == 4 && (modify_op || op_type == 3)}" v-on:click="zoomOut()">
-                <div v-bind:class="{'op_icon shrink_active': op_type == 4 && (modify_op || op_type == 3), 'op_icon shrink': op_type != 4 }"></div>
+              <div title="缩小地图" v-bind:class="{'op_bgc': op_type != 4 || !modify_op, 'op_bgc_selected':  op_type == 4 && (modify_op || op_type == 3)}" v-on:click="zoomOut()">
+                <div title="缩小地图" v-bind:class="{'op_icon shrink_active': op_type == 4 && (modify_op || op_type == 3), 'op_icon shrink': op_type != 4 }"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 5 || !modify_op, 'op_bgc_selected': op_type == 5 && (modify_op || op_type == 3)}" v-on:click="zoomIn()">
-                <div v-bind:class="{'op_icon magnify_active': op_type == 5 && (modify_op || op_type == 3), 'op_icon magnify': op_type != 5 }"></div>
+              <div title="放大地图" v-bind:class="{'op_bgc': op_type != 5 || !modify_op, 'op_bgc_selected': op_type == 5 && (modify_op || op_type == 3)}" v-on:click="zoomIn()">
+                <div title="放大地图" v-bind:class="{'op_icon magnify_active': op_type == 5 && (modify_op || op_type == 3), 'op_icon magnify': op_type != 5 }"></div>
               </div>
             </el-col>
           </el-row>
           <el-row style="padding: 0 5px; margin-top: 5px;">
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 6 || (!modify_op), 'op_bgc_selected': op_type == 6 && modify_op}" v-on:click="cutLine()">
-                <div v-bind:class="{'op_icon cut_active': op_type == 6 && modify_op, 'op_icon cut_disable': !modify_op, 'op_icon cut': op_type != 6 && modify_op}"></div>
+              <div title="截断线路" v-bind:class="{'op_bgc': op_type != 6 || (!modify_op), 'op_bgc_selected': op_type == 6 && modify_op}" v-on:click="cutLine()">
+                <div title="截断线路" v-bind:class="{'op_icon cut_active': op_type == 6 && modify_op, 'op_icon cut_disable': !modify_op, 'op_icon cut': op_type != 6 && modify_op}"></div>
               </div>
             </el-col>
             <el-col :span="4">
-              <div v-bind:class="{'op_bgc': op_type != 7 || (!modify_op), 'op_bgc_selected': op_type == 7 && modify_op}" v-on:click="dragCircle()">
-                <div v-bind:class="{'op_icon drag_active': op_type == 7 && modify_op, 'op_icon drag_disable': !modify_op, 'op_icon drag': op_type != 7 && modify_op}"></div>
+              <div title="移动站点" v-bind:class="{'op_bgc': op_type != 7 || (!modify_op), 'op_bgc_selected': op_type == 7 && modify_op}" v-on:click="dragCircle()">
+                <div title="移动站点" v-bind:class="{'op_icon drag_active': op_type == 7 && modify_op, 'op_icon drag_disable': !modify_op, 'op_icon drag': op_type != 7 && modify_op}"></div>
               </div>
             </el-col>
             <el-col :span="4">
@@ -99,7 +99,8 @@
       <div id="station_panel" class="op_station" v-show="show_station">
         <div class="white edit_title">
           <span class="title_name">站点属性</span>
-          <span v-bind:class="{'op_button station_confirm op_button_inactive': (station_name == '' || station_type == ''), 'op_button station_confirm op_button_active': (station_name != '' && station_type != '') }" v-on:click="addNewStation">确认</span>
+          <span v-bind:class="{'op_button station_remove op_button_inactive': (station_name == '' || station_type == ''), 'op_button station_remove op_button_active': (station_name != '' && station_type != '') }" v-on:click="removeStation">删除</span>
+          <span v-bind:class="{'op_button station_confirm op_button_inactive': (station_name == '' || station_type == '' || current_station == null), 'op_button station_confirm op_button_active': (station_name != '' && station_type != '') && (current_station != null)}" v-on:click="addNewStation">确认</span>
         </div>
         <span class="name_label">名称</span>
         <el-input class="station_input" v-model="station_name"></el-input>
@@ -112,9 +113,21 @@
             :value="item.type">
           </el-option>
         </el-select>
+        <span class="insert_label">插入至</span>
+        <el-select v-model="station_order" class="select_order" clearable placeholder="仅新增时使用">
+          <el-option
+            v-for="item in station_orders"
+            :key="item.order"
+            :label="item.name"
+            :value="item.order">
+          </el-option>
+        </el-select>
+        <span class="insert_label_app">后</span>
       </div>
       <div class="white effect_panel">
-        <div class="effect_title"><span class="white op_title">成本测算</span></div>
+        <div class="effect_title"><span class="white op_title">成本测算</span>
+          <span v-bind:class="{'op_button add op_button_inactive op_button_disable': !modify_op, 'op_button add op_button_active': modify_op}" v-on:click="saveLine()">计算</span>
+        </div>
         <div class="form">
           <div class="odd">
             <div class="left">
@@ -124,14 +137,15 @@
               <span class="label">车辆数</span>
             </div>
             <div class="right">
-              <span class="label">增加成本（万元/每车）</span>
+              <span class="label">车辆成本（万元/每车每年）</span>
             </div>
           </div>
           <div class="even">
             <div class="left">
               <span class="label"></span>
             </div>
-            <div class="middle">
+            <div class="middle" style="position: relative;">
+              <span style="position: absolute; top:0; right: 30px; z-index: 100;" id="vc">{{vehicle_change}}</span>
               <el-input v-model="vehicle_num"></el-input>
             </div>
             <div class="right">
@@ -146,14 +160,15 @@
               <span class="label">人员数</span>
             </div>
             <div class="right">
-              <span class="label">平均成本（万元/每人）</span>
+              <span class="label">平均成本（万元/每人每年）</span>
             </div>
           </div>
           <div class="even">
             <div class="left">
               <span class="label"></span>
             </div>
-            <div class="middle">
+            <div class="middle" style="position: relative;">
+              <span style="position: absolute; top:0; right: 30px; z-index: 100;" id="sc">{{staff_change}}</span>
               <el-input v-model="staff_num"></el-input>
             </div>
             <div class="right">
@@ -175,8 +190,9 @@
             <div class="left">
               <span class="label">{{item.name}}</span>
             </div>
-            <div class="middle">
+            <div class="middle" style="position: relative;">
               <span class="label">{{station_type_num[index]}}</span>
+              <span style="position: absolute; top:0; right: 30px; z-index: 100;" :id="'stnc' + index">{{station_type_num_change[index]}}</span>
             </div>
             <div class="right">
               <el-input v-model="station_type_cost[index]"></el-input>
@@ -190,6 +206,7 @@
             </div>
             <div class="right">
               <span class="label">{{station_cost}}</span>
+              <span id="scc">{{station_cost_change}}</span>
             </div>
           </div>
           <div class="odd">
@@ -200,6 +217,7 @@
             </div>
             <div class="right">
               <span class="label">{{total_cost}}</span>
+              <span id="tcc">{{total_cost_change}}</span>
             </div>
           </div>
         </div>
@@ -210,51 +228,149 @@
         </div>
         <div class="form">
           <div class="odd">
-            <div class="left">
-              <span class="label">有效覆盖范围</span>
+            <div class="left" style="width: 35%">
+              <span class="label">有效覆盖范围(平方千米)</span>
             </div>
             <div class="middle">
             </div>
-            <div class="right">
+            <div class="right" style="width: 20%">
               <span class="label">{{valid_range}}</span>
+              <span id="vrc">{{valid_range_change}}</span>
             </div>
           </div>
           <div class="even">
-            <div class="left">
-              <span class="label">人口数量</span>
+            <div class="left" style="width: 35%">
+              <span class="label">人口数量(万人)</span>
             </div>
             <div class="middle">
             </div>
-            <div class="right">
+            <div class="right" style="width: 20%">
               <span class="label">{{population}}</span>
+              <span id="pc">{{population_change}}</span>
             </div>
           </div>
           <div class="odd">
             <div class="left">
               <span class="label">POI数量</span>
             </div>
-            <div class="middle" style="width: 55%">
+            <div class="middle" style="width: 55%"></div>
+            <div class="right" style="width: 15%">
+              <span class="label">{{poi_num}}</span>
+              <span id="pnc">{{poi_num_change}}</span>
+            </div>
+          </div>
+          <div class="even">
+            <div class="left" style="width: 0%"></div>
+            <div class="middle" style="width: 100%">
               <el-row>
                 <el-col :span="6">
                   <div v-bind:class="{'poi_icon public_selected': poi_select[0], 'poi_icon public_normal': !poi_select[0]}" v-on:click="poiSelect(0)"></div>
                   <span>{{poi_list[0].num}}</span>
+                  <span id="plc0">{{poi_list_change[0].num}}</span>
                 </el-col>
                 <el-col :span="6">
                   <div v-bind:class="{'poi_icon school_selected': poi_select[1], 'poi_icon school_normal': !poi_select[1]}" v-on:click="poiSelect(1)"></div>
                   <span>{{poi_list[1].num}}</span>
+                  <span id="plc1">{{poi_list_change[1].num}}</span>
                 </el-col>
                 <el-col :span="6">
                   <div v-bind:class="{'poi_icon hospital_selected': poi_select[2], 'poi_icon hospital_normal': !poi_select[2]}" v-on:click="poiSelect(2)"></div>
                   <span>{{poi_list[2].num}}</span>
+                  <span id="plc2">{{poi_list_change[2].num}}</span>
                 </el-col>
                 <el-col :span="6">
                   <div v-bind:class="{'poi_icon house_selected': poi_select[3], 'poi_icon house_normal': !poi_select[3]}" v-on:click="poiSelect(3)"></div>
                   <span>{{poi_list[3].num}}</span>
+                  <span id="plc3">{{poi_list_change[3].num}}</span>
                 </el-col>
               </el-row>
             </div>
-            <div class="right" style="width: 15%">
-              <span class="label">{{poi_num}}</span>
+            <div class="right" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="white flow_panel" v-show="cutFlow">
+        <div class="flow_title">
+          <span class="white op_title">客流变化</span>
+        </div>
+        <div class="form" style="width: 240px;">
+          <div class="odd">
+            <div class="left" style="width: 55%">
+              <span class="label">原线路客流（人/每日）</span>
+            </div>
+            <div class="right" style="width: 40%">
+              <span class="label">{{flow_prev}}</span>
+            </div>
+          </div>
+          <div class="even">
+            <div class="left" style="width: 55%">
+              <span class="label">截断后客流（人/每日）</span>
+            </div>
+            <div class="right" style="width: 40%">
+              <span class="label">{{flow_current}}</span>
+            </div>
+          </div>
+          <div class="odd">
+            <div class="left" style="width: 55%">
+              <span class="label">客流下降（人/每日）</span>
+            </div>
+            <div class="right" style="width: 40%">
+              <span class="label">{{flow_decrease}}</span>
+            </div>
+          </div>
+          <div class="even">
+            <div class="left" style="width: 55%">
+              <span class="label">对换乘线路客流影响</span>
+            </div>
+            <div class="right" style="width: 40%">
+              <span class="label">{{flow_impact}}</span>
+            </div>
+          </div>
+          <div class="odd">
+            <div class="left" style="width: 55%">
+              <span class="label">原始线路客流影响比例</span>
+            </div>
+            <div class="right" style="width: 40%">
+              <span class="label">{{flow_rate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="white flow_panel" v-show="editFlow">
+        <div class="flow_title">
+          <span class="white op_title">客流变化</span>
+        </div>
+        <div class="form" style="width: 240px;">
+          <div class="odd">
+            <div class="left" style="width: 55%">
+              <span class="label">原线路客流（人/每日）</span>
+            </div>
+            <div class="right" style="width: 40%">
+              <span class="label">{{flow_prev}}</span>
+            </div>
+          </div>
+          <div class="even">
+            <div class="left" style="width: 55%">
+              <span class="label">调整后客流（人/每日）</span>
+            </div>
+            <div class="right" style="width: 40%">
+              <span class="label">{{flow_current}}</span>
+            </div>
+          </div>
+          <div class="odd">
+            <div class="left" style="width: 55%">
+              <span class="label">客流下降（人/每日）</span>
+            </div>
+            <div class="right" style="width: 40%">
+              <span class="label">{{flow_decrease}}</span>
+            </div>
+          </div>
+          <div class="even">
+            <div class="left" style="width: 55%">
+              <span class="label">原始线路客流影响比例</span>
+            </div>
+            <div class="right" style="width: 40%">
+              <span class="label">{{flow_rate}}</span>
             </div>
           </div>
         </div>
@@ -266,7 +382,8 @@
 <script>
     import navBar from '../../components/navBar/navBar.vue';
     import banner from '../../components/banner/banner.vue';
-    import grids from '../grids.json'
+    import grids from '../small_grids.json'
+    import structure from '../structure.json'
     export default {
         name: "editLine",
         components: {
@@ -276,8 +393,8 @@
         data(){
             return{
                 map: null, //地图
-                line_name: '', //线路名称
-                line_direction: '', //线路方向
+                line_name: '38', //线路名称
+                line_direction: '上行', //线路方向
                 layer_base: null, //底图图层
                 layer_station: null, //圆圈图层
                 layer_point: null, //线路图层
@@ -299,13 +416,13 @@
                 station_cost: 0, //站点总成本
                 total_cost: 0, //总计总成本
                 vehicle_num: 0, //车辆数量
-                vehicle_extra_cost: 0, //额外车辆数量
+                vehicle_extra_cost: 12, //额外车辆成本
                 staff_num: 0, //人员数量
-                staff_mean_cost: 0, //人员平均成本
+                staff_mean_cost: 10, //人员平均成本
                 station_type_num: [0, 0], //站点类型数量
-                station_type_cost: [0, 0], //站点类型成本
-                valid_range: '',  //有效覆盖范围
-                population: '', //人口数量
+                station_type_cost: [20, 40], //站点类型成本
+                valid_range: 0,  //有效覆盖范围
+                population: 0, //人口数量
                 poi_num: 0, //POI总计数量
                 poi_list: [ //POI详情
                     {
@@ -348,7 +465,82 @@
                 layer_line_another: null,
                 layer_station_another: null,
                 cut_flow_current: 0,
-                cut_flow_transfer: 0
+                cut_flow_transfer: 0,
+                station_index: -1,
+                move_status: 0, // 0 为选择要移动的站点，1 为选择移动后的站点，-1 为选择要移动的站点有误
+                new_station: null,
+                station_order: '',
+                station_orders: [],
+                potential_lines: [null, null, null],
+                cuts: [],
+                vehicle_change: '',
+                staff_change: '',
+                station_type_num_change: ['', ''],
+                station_cost_change: '',
+                total_cost_change: '',
+                valid_range_change: '',
+                population_change: '',
+                poi_list_change: [
+                    {
+                        type: "公共设施",
+                        num: '',
+                        detail: []
+                    },
+                    {
+                        type: "学校",
+                        num: '',
+                        detail: []
+                    },
+                    {
+                        type: "医院",
+                        num: '',
+                        detail: []
+                    },
+                    {
+                        type: "小区",
+                        num: '',
+                        detail: []
+                    }
+                ],
+                poi_num_change: '',
+                vehicle_last: 0,
+                staff_last: 0,
+                station_type_num_last: [0, 0],
+                station_cost_last: 0,
+                total_cost_last: 0,
+                valid_range_last: 0,
+                population_last: 0,
+                poi_list_last: [
+                    {
+                        type: "公共设施",
+                        num: 0,
+                        detail: []
+                    },
+                    {
+                        type: "学校",
+                        num: 0,
+                        detail: []
+                    },
+                    {
+                        type: "医院",
+                        num: 0,
+                        detail: []
+                    },
+                    {
+                        type: "小区",
+                        num: 0,
+                        detail: []
+                    }
+                ],
+                poi_num_last: 0,
+                each_station_cost: [],
+                cutFlow: false,
+                editFlow: false,
+                flow_prev: 0,
+                flow_current: 0,
+                flow_decrease: 0,
+                flow_impact: 0,
+                flow_rate: 0
             }
         },
         mounted(){
@@ -360,7 +552,7 @@
             document.getElementById("nav_bar").style.height = height_c;
             //创建地图，缩放等级为13，主题为暗黑
             that.map = new AMap.Map('container',{
-                center: [120.62, 31.32],
+                center: [120.60, 31.27],
                 zoom: 13
             });
             that.map.setMapStyle('amap://styles/dark');
@@ -372,15 +564,217 @@
             // }
         },
         methods:{
+            recordData(){
+                let that = this;
+                that.vehicle_last = that.vehicle_num;
+                that.staff_last = that.staff_num;
+                that.station_type_num_last = that.station_type_num;
+                that.station_cost_last = that.station_cost;
+                that.total_cost_last = that.total_cost;
+                that.valid_range_last = that.valid_range;
+                that.population_last = that.population;
+            },
+            processAttr(num){
+                let res = '', color = '';
+                if(num == 0){
+                    res = ' -';
+                    color = '#ffffff';
+                }
+                else if(num > 0){
+                    res = ' +' + num;
+                    color = '#ff0000';
+                }
+                else{
+                    res = ' ' + num;
+                    color = '#00ff00';
+                }
+                return {str: res, color: color};
+            },
+            calDiff(){
+                let that = this;
+                that.vehicle_change = that.vehicle_num - that.vehicle_last;
+                let vehicle_p = that.processAttr(that.vehicle_change);
+                that.vehicle_change = vehicle_p.str;
+                document.getElementById('vc').style.color = vehicle_p.color;
+                that.staff_change = that.staff_num - that.staff_last;
+                let staff_p = that.processAttr(that.staff_change);
+                that.staff_change = staff_p.str;
+                document.getElementById('sc').style.color = staff_p.color;
+                for(let i = 0; i < 2; i++){
+                    that.station_type_num_change[i] = that.station_type_num[i] - that.station_type_num_last[i];
+                    let station_type_p = that.processAttr(that.station_type_num_change[i]);
+                    that.station_type_num_change[i] = station_type_p.str;
+                    document.getElementById('stnc' + i).style.color = station_type_p.color;
+                }
+                that.station_cost_change = that.station_cost - that.station_cost_last;
+                let station_cost_p = that.processAttr(that.station_cost_change);
+                that.station_cost_change = station_cost_p.str;
+                document.getElementById('scc').style.color = station_cost_p.color;
+                that.total_cost_change = that.total_cost - that.total_cost_last;
+                let total_cost_p = that.processAttr(that.total_cost_change);
+                that.total_cost_change = total_cost_p.str;
+                document.getElementById('tcc').style.color = total_cost_p.color;
+                that.valid_range_change = (that.valid_range - that.valid_range_last).toFixed(2);
+                let valid_range_p = that.processAttr(that.valid_range_change);
+                that.valid_range_change = valid_range_p.str;
+                document.getElementById('vrc').style.color = valid_range_p.color;
+                that.population_change = (that.population - that.population_last).toFixed(2);
+                let population_p = that.processAttr(that.population_change);
+                that.population_change = population_p.str;
+                document.getElementById('pc').style.color = population_p.color;
+            },
+            removeCallBack(result, i, colors, via_points, index, prev, next){
+                let that = this;
+                via_points[i] = [];
+                let arr = [];
+                let info = result.routes[0].steps;
+                for(let j = 0; j < info.length; j++){
+                    let center = that.nearestCenter(info[j].start_location);
+                    via_points[i].push(center);
+                    arr.push(new AMap.LngLat(center.center[0], center.center[1]));
+                    if(j == info.length - 1){
+                        let end = that.nearestCenter(info[j].end_location);
+                        via_points[i].push(end);
+                        arr.push(new AMap.LngLat(end.center[0], end.center[1]));
+                    }
+                }
+                that.potential_lines[i] = new AMap.Polyline({
+                    map: that.map,
+                    path: arr,
+                    strokeColor: colors[i],//线颜色
+                    strokeOpacity: 0.8,//线透明度
+                    isOutline: true,
+                    outlineColor:'white',
+                    strokeWeight: 5, //线宽
+                    zIndex: 120
+                });
+                that.potential_lines[i].on("click", function(){
+                    for(let j = 0; j < 3; j++){
+                        if(that.potential_lines[j] != null) that.potential_lines[j].hide();
+                        that.potential_lines[j] = null;
+                    }
+                    that.points.splice(prev + 1, next - prev - 1);
+                    that.lines.splice(prev, next - prev);
+                    that.paths.splice(prev + 1, next - prev);
+                    let start_index = prev;
+                    for(let j = 0; j < via_points[i].length - 1; j++){
+                        that.lines.splice(start_index, 0,
+                            {'line': [via_points[i][j].center[0] + "," + via_points[i][j].center[1], via_points[i][j + 1].center[0] + "," + via_points[i][j + 1].center[1]]});
+                        if(j > 0){
+                            that.points.splice(start_index + 1, 0, via_points[i][j]);
+                            that.paths.splice(start_index + 1, 0, via_points[i][j].center);
+                        }
+                        start_index += 1;
+                    }
+                    let add_points = via_points[i].length - 2;
+                    for(let i = index + 1; i < that.station_map.length; i++){
+                        that.station_map[i][1] += add_points - (next - prev - 1);
+                        that.station_map[i][2] += add_points - (next - prev - 1);
+                    }
+                    // 从站点数组和信息数组中删去该站点
+                    that.stations.splice(index, 1);
+                    that.stations_info.splice(index, 1);
+                    that.station_map.splice(index, 1);
+                    that.renderLayer();
+                });
+            },
+            // 删除站点
+            removeStation(){
+              let that = this;
+              if(that.station_index == -1) return;
+              // 如果是第一个点，points 和 paths 都从第二个点开始
+              if(that.station_index == 0){
+                  let point_index = that.station_map[that.station_index + 1][2];
+                  that.points.splice(0, point_index);
+                  that.lines.splice(0, point_index);
+                  that.paths.splice(0, point_index);
+                  for(let i = 1; i < that.station_map.length; i++){
+                      that.station_map[i][1] -= point_index;
+                      that.station_map[i][2] -= point_index;
+                  }
+                  that.stations.splice(that.station_index, 1);
+                  that.stations_info.splice(that.station_index, 1);
+                  that.station_map.splice(that.station_index, 1);
+                  that.renderLayer();
+              }
+              // 如果是最后一个点，points 和 paths 都在前一个点结束
+              else if(that.station_index == that.station_map.length - 1){
+                  let point_index = that.station_map[that.station_index - 1][2];
+                  let cur_index = that.station_map[that.station_index][2];
+                  that.points.splice(point_index + 1, cur_index - point_index);
+                  that.lines.splice(point_index, cur_index - point_index);
+                  that.paths.splice(point_index + 1, cur_index - point_index);
+                  // 从站点数组和信息数组中删去该站点
+                  that.stations.splice(that.station_index, 1);
+                  that.stations_info.splice(that.station_index, 1);
+                  that.station_map.splice(that.station_index, 1);
+                  that.renderLayer();
+              }
+              // 中间的点，让用户选择一条线路，最快捷(绿)，最经济则(紫)或最短距离(黄)
+              else{
+                  that.$message({
+                      showClose: true,
+                      message: '请点击以选择最佳路线',
+                      type: 'warning'
+                  });
+                  let prev = that.station_map[that.station_index - 1][2];
+                  let next = that.station_map[that.station_index + 1][2];
+                  let prev_pos = that.stations[that.station_index - 1].center;
+                  let next_pos = that.stations[that.station_index + 1].center;
+                  let policies = [AMap.DrivingPolicy.LEAST_TIME, AMap.DrivingPolicy.LEAST_FEE, AMap.DrivingPolicy.LEAST_DISTANCE];
+                  let colors = ["#00FF00", "#D28EFF", "#FFAA33"];
+                  let via_points = [[], [], []];
+                  for(let i = 0; i < 3; i++){
+                      let driving = new AMap.Driving({
+                          // 驾车路线规划策略，AMap.DrivingPolicy.LEAST_TIME是最快捷模式
+                          policy: policies[i]
+                      });
+
+                      let startLngLat = prev_pos;
+                      let endLngLat = next_pos;
+                      let index = that.station_index;
+                      driving.search(startLngLat, endLngLat, function (status, result) {
+                          if (status === 'complete' && result.info === 'OK') {
+                              that.removeCallBack(result, i, colors, via_points, index, prev, next);
+                          }
+                      });
+                  }
+              }
+            },
+            renderLayer(){
+                let that = this;
+                // 重新渲染站点图层
+                that.layer_station.setData(that.stations, {
+                    type: 'json',
+                    lnglat: 'center'
+                });
+                that.layer_station.render();
+                //重新渲染途径点和线的图层
+                that.layer_point.setData(that.points, {
+                    type: 'json',
+                    lnglat: 'center'
+                });
+                that.layer_point.render();
+                that.layer_line.setData(that.lines, {
+                    lnglat: 'line'
+                });
+                that.layer_line.render();
+                that.current_station = null;
+                that.station_name = '';
+                that.station_type = '';
+            },
             // 截断线路
             cutLine(){
               let that = this;
               that.op_type = 6;
+              that.add_station = false;
             },
             processCut(index){
                 let that = this;
+                that.cuts = [];
+                that.cuts.push(that.cut_pos);
                 // 绘制截断点
-                that.layer_cut.setData([that.cut_pos], {
+                that.layer_cut.setData(that.cuts, {
                     type: 'json',
                     lnglat: 'center'
                 });
@@ -502,7 +896,14 @@
             },
             // 移动站点
             dragCircle(){
-
+                let that = this;
+                that.op_type = 7;
+                that.show_station = false;
+                that.$message({
+                    showClose: true,
+                    message: '选择要移动的站点',
+                    type: 'warning'
+                });
             },
             //缩小地图
             zoomOut(){
@@ -534,9 +935,130 @@
                     }
                 }
             },
+            insertStation(){
+                let that = this;
+                if(that.station_order == '') return;
+                let cur_station = that.stations.pop();
+                that.stations_info.splice(that.station_order + 1, 0,
+                    {"center": cur_station.center, "name": that.station_name, "type": that.station_type});
+                that.stations.splice(that.station_order + 1, 0, cur_station);
+                let add_points = 0;
+                let policies = [AMap.DrivingPolicy.LEAST_TIME, AMap.DrivingPolicy.LEAST_FEE, AMap.DrivingPolicy.LEAST_DISTANCE];
+                let colors = ["#00FF00", "#D28EFF", "#FFAA33"];
+                let via_points = [[], [], []];
+                let prev = null, next = null;
+                let startLngLat = null, endLngLat = null, via = {waypoints: []};
+                // 成为第一个站点
+                if(that.station_order == -1){
+                    next = that.station_map[0][2];
+                    startLngLat = cur_station.center;
+                    endLngLat = that.stations[1].center;
+                }
+                // 最后一个站点
+                else if(that.station_order == that.station_map.length - 1){
+                    prev = that.station_map[that.station_map.length - 1][2];
+                    startLngLat = that.stations[that.station_map.length - 1].center;
+                    endLngLat = cur_station.center;
+                }
+                else{
+                    prev = that.station_map[that.station_order][2];
+                    next = that.station_map[that.station_order + 1][2];
+                    startLngLat = that.stations[that.station_order].center;
+                    endLngLat = that.stations[that.station_order + 2].center;
+                    via.waypoints.push(cur_station.center);
+                }
+                for(let i = 0; i < 3; i++){
+                    let driving = new AMap.Driving({
+                        // 驾车路线规划策略，AMap.DrivingPolicy.LEAST_TIME是最快捷模式
+                        policy: policies[i]
+                    });
+
+                    driving.search(startLngLat, endLngLat, via, function (status, result) {
+                        via_points[i] = [];
+                        let arr = [];
+                        let info = result.routes[0].steps;
+                        for(let j = 0; j < info.length; j++){
+                            let center = that.nearestCenter(info[j].start_location);
+                            via_points[i].push(center);
+                            arr.push(new AMap.LngLat(center.center[0], center.center[1]));
+                            if(j == info.length - 1){
+                                let end = that.nearestCenter(info[j].end_location);
+                                via_points[i].push(end);
+                                arr.push(new AMap.LngLat(end.center[0], end.center[1]));
+                            }
+                        }
+                        that.potential_lines[i] = new AMap.Polyline({
+                            map: that.map,
+                            path: arr,
+                            strokeColor: colors[i],//线颜色
+                            strokeOpacity: 0.8,//线透明度
+                            isOutline: true,
+                            outlineColor:'white',
+                            strokeWeight: 5, //线宽
+                            zIndex: 120
+                        });
+                        that.potential_lines[i].on("click", function(){
+                            for(let j = 0; j < 3; j++){
+                                if(that.potential_lines[j] != null) that.potential_lines[j].hide();
+                                that.potential_lines[j] = null;
+                            }
+                            if(prev != null && next != null){
+                                that.points.splice(prev + 1, next - prev - 1);
+                                that.lines.splice(prev, next - prev);
+                                that.paths.splice(prev + 1, next - prev - 1);
+                            }
+                            if(prev != null){
+                                let start_index = prev;
+                                let tag = 0;
+                                for(let j = 0; j < via_points[i].length - 1; j++){
+                                    if(tag == 0 && that.isNear(via_points[i][j].center, that.stations[that.station_order + 1].center)){
+                                        that.station_map.splice(that.station_order + 1, 0, [that.station_order + 1, -1, prev + j]);
+                                        tag = 1;
+                                    }
+                                    that.lines.splice(start_index, 0,
+                                        {'line': [via_points[i][j].center[0] + "," + via_points[i][j].center[1], via_points[i][j + 1].center[0] + "," + via_points[i][j + 1].center[1]]});
+                                    if(j > 0){
+                                        that.points.splice(start_index + 1, 0, via_points[i][j]);
+                                        that.paths.splice(start_index + 1, 0, via_points[i][j].center);
+                                    }
+                                    start_index += 1;
+                                }
+                                add_points = via_points[i].length - 2;
+                                for(let i = that.station_order + 2; i < that.station_map.length; i++){
+                                    that.station_map[i][0] += 1;
+                                    that.station_map[i][2] += add_points - (next - prev - 1);
+                                }
+                            }
+                            else{
+                                that.points.splice(0, 0, cur_station);
+                                that.paths.splice(0, 0, cur_station.center);
+                                that.station_map.splice(0, 0, [0, -1, 0]);
+                                let start_index = 0;
+                                for(let j = 0; j < via_points[i].length - 1; j++){
+                                    that.lines.splice(start_index, 0,
+                                        {'line': [via_points[i][j].center[0] + "," + via_points[i][j].center[1], via_points[i][j + 1].center[0] + "," + via_points[i][j + 1].center[1]]});
+                                    if(j > 0){
+                                        that.points.splice(start_index + 1, 0, via_points[i][j]);
+                                        that.paths.splice(start_index + 1, 0, via_points[i][j].center);
+                                    }
+                                    start_index += 1;
+                                }
+                                add_points = via_points[i].length - 1;
+                                for(let i = that.station_order + 2; i < that.station_map.length; i++){
+                                    that.station_map[i][0] += 1;
+                                    that.station_map[i][2] += add_points;
+                                }
+                            }
+                            that.renderLayer();
+                        });
+                    })
+                }
+            },
             //添加新站点
             addNewStation(){
                 let that = this;
+                that.add_station = false;
+                if(that.station_name == '' || that.station_type == '') return;
                 //先从已有站点里搜索
                 let index = -1;
                 for(let i = 0; i < that.stations_info.length; i++){
@@ -545,9 +1067,37 @@
                         break;
                     }
                 }
-                //若该站点不存在，则添加到已有站点里
+                //若该站点不存在
                 if(index == -1){
-                    that.stations_info.push({"center": that.current_station, "name": that.station_name, "type": that.station_type});
+                    let point_index = that.isOnLine({"center": that.current_station});
+                    if(point_index == -1){
+                        that.insertStation();
+                        for(let i = that.station_order + 2; i < that.station_orders.length; i++){
+                            that.station_orders[i].order += 1;
+                        }
+                        that.station_orders.splice(that.station_order + 2, 0, {'order': that.station_order + 1, 'name': that.station_name});
+                    }
+                    // 若在线路上
+                    else{
+                        let prev_station = -1;
+                        for(let i = 0; i < that.station_map.length; i++){
+                            if(that.station_map[i][2] > point_index){
+                                prev_station = i - 1;
+                                break;
+                            }
+                        }
+                        let station = that.stations.pop();
+                        that.stations.splice(prev_station + 1, 0, station);
+                        that.station_map.splice(prev_station + 1, 0, [prev_station + 1, -1, point_index]);
+                        that.stations_info.splice(prev_station, 0, {"center": that.current_station, "name": that.station_name, "type": that.station_type});
+                        for(let i = prev_station + 2; i < that.station_map.length; i++){
+                            that.station_map[i][0] += 1;
+                        }
+                        for(let i = prev_station + 2; i < that.station_orders.length; i++){
+                            that.station_orders[i].order += 1;
+                        }
+                        that.station_orders.splice(prev_station + 2, 0, {'order': prev_station + 1, 'name': that.station_name});
+                    }
                 }
                 //否则读取该站点信息
                 else{
@@ -555,15 +1105,14 @@
                 }
                 //站点信息清空
                 that.current_station = null;
-                that.station_name = '';
-                that.station_type = '';
+                that.station_order = '';
             },
             //根据非按钮进行的地图缩放调整六边形网格
             justifyHex(e){
                 let that = this;
                 let zoomLevel = that.map.getZoom();
                 if(zoomLevel > 12){
-                    if(that.edit_op || that.modify_op){
+                    if(that.modify_op){
                         if(that.layer_base == null) that.drawHexagon();
                         else{
                             that.layer_base.addTo(that.amap);
@@ -572,9 +1121,9 @@
                     }
                 }
                 else{
-                    if(that.edit_op || that.modify_op){
+                    if(that.modify_op){
                         if(that.show_station){
-                            that.hideStationInput();
+                            that.show_station = false;
                         }
                         that.layer_base.remove();
                     }
@@ -595,13 +1144,13 @@
                 that.station_cost = 0;
                 that.total_cost = 0;
                 that.vehicle_num = 0;
-                that.vehicle_extra_cost = 0;
+                that.vehicle_extra_cost = 12;
                 that.staff_num = 0;
-                that.staff_mean_cost = 0;
+                that.staff_mean_cost = 10;
                 that.station_type_num = [0, 0];
-                that.station_type_cost = [0, 0];
-                that.valid_range = '';
-                that.population = '';
+                that.station_type_cost = [20, 40];
+                that.valid_range = 0;
+                that.population = 0;
                 that.poi_num = 0;
                 that.poi_list = [{type: "公共设施", num: 0, detail: []}, {type: "学校", num: 0, detail: []},
                     {type: "医院", num: 0, detail: []}, {type: "小区", num: 0, detail: []}];
@@ -618,11 +1167,14 @@
                 that.current_station = null;
                 that.station_map = [];
                 //that.center_visit = [];
-                that.layer_cut = null;
                 that.cut_pos = null;
+                that.cuts = [];
                 that.cut_flow_current = 0;
                 that.cut_flow_transfer = 0;
-                if(that.amap != null) that.amap = null;
+                for(let i = 0; i < 3; i++){
+                    if(that.potential_lines[i] != null) that.potential_lines[i].hide();
+                    that.potential_lines[i] = null;
+                }
                 if(that.layer_base != null){
                     that.layer_base.destroy();
                     that.layer_base = null;
@@ -655,6 +1207,68 @@
                     that.layer_station_another.destroy();
                     that.layer_station_another = null;
                 }
+                if(that.amap != null) that.amap = null;
+                that.vehicle_change = '';
+                that.staff_change = '';
+                that.station_type_num_change = ['', ''];
+                that.station_cost_change = '';
+                that.total_cost_change = '';
+                that.valid_range_change = '';
+                that.population_change = '';
+                that.poi_list_change = [
+                {
+                    type: "公共设施",
+                    num: '',
+                    detail: []
+                },
+                {
+                    type: "学校",
+                    num: '',
+                    detail: []
+                },
+                {
+                    type: "医院",
+                    num: '',
+                    detail: []
+                },
+                {
+                    type: "小区",
+                    num: '',
+                    detail: []
+                }];
+                that.poi_num_change = '';
+                that.vehicle_last = 0;
+                that.staff_last = 0;
+                that.station_type_num_last = [0, 0];
+                that.station_cost_last = 0;
+                that.total_cost_last = 0;
+                that.valid_range_last = 0;
+                that.population_last = 0;
+                that.poi_list_last = [
+                    {
+                        type: "公共设施",
+                        num: 0,
+                        detail: []
+                    },
+                    {
+                        type: "学校",
+                        num: 0,
+                        detail: []
+                    },
+                    {
+                        type: "医院",
+                        num: 0,
+                        detail: []
+                    },
+                    {
+                        type: "小区",
+                        num: 0,
+                        detail: []
+                    }];
+                that.poi_num_last = 0;
+                that.cutFlow = false;
+                that.editFlow = false;
+                that.$forceUpdate();
             },
             nearestCenter(pos){
               let that = this;
@@ -710,12 +1324,12 @@
                         }
                         let last = 0;
                         let station_index = 0;
-                        let interval = 8;
-                        //let radius = 500;
-                        // 找到距离途径点最近的六边形中心，为优化显示效果，间隔为8，更新站点途径点映射
+                        let interval = 3;
+                        //let radius = 100;
+                        // 找到距离途径点最近的六边形中心，为优化显示效果，间隔为3，更新站点途径点映射
                         for(let i = 0; i < pathArr.length; i++){
-                            if(i == that.station_map[station_index][1]){
-                                let current = that.nearestCenter(pathArr[i]);
+                            let current = that.nearestCenter(pathArr[i]);
+                            if(station_index < stops.length && i == that.station_map[station_index][1]){
                                 that.points.push(current);
                                 that.paths.push(current.center);
                                 that.station_map[station_index].push(that.points.length - 1);
@@ -723,7 +1337,6 @@
                                 last = i;
                             }
                             else if(i == last + interval){
-                                let current = that.nearestCenter(pathArr[i]);
                                 that.points.push(current);
                                 that.paths.push(current.center);
                                 last = i;
@@ -748,7 +1361,7 @@
                         // }
                         // 找到距离站点最近的六边形中心
                         for(let i = 0; i < stops.length; i++){
-                            let just = that.points[that.station_map[i][2]]
+                            let just = that.points[that.station_map[i][2]];
                             that.stations.push(just);
                             that.stations_info.push({"center": just.center, "name": stops[i].name, "type": 1});
                         }
@@ -758,12 +1371,19 @@
                             lnglat: 'center'
                         });
                         that.layer_station.render();
+                        that.station_orders = [];
+                        that.station_orders.push({'order': -1, 'name': '-'});
+                        for(let i = 0; i < that.stations_info.length; i++){
+                            that.station_orders.push({'order': i, 'name': that.stations_info[i].name});
+                        }
+                        that.saveLine(false);
                     }
                 }
             },
             //编辑线路
             editLine(){
                 let that = this;
+                that.add_station = false;
                 if(that.line_name == '' || that.line_direction == ''){
                     that.$message({
                         showClose: true,
@@ -775,7 +1395,6 @@
                     // 清空数据，判断缩放等级
                     that.clearData();
                     that.modify_op = true;
-                    that.op_type = 0;
                     if(that.map.getZoom() > 12){
                         that.drawHexagon();
                     }
@@ -786,20 +1405,33 @@
                             type: 'warning'
                         });
                     }
-                    // 借用 API 搜索已有线路
-                    AMap.plugin(["AMap.LineSearch"], function(){
-                        let linesearch = new AMap.LineSearch({
-                            pageIndex: 1, //页码，默认值为1
-                            pageSize: 10, //单页显示结果条数，默认值为20，最大值为50
-                            city: "苏州", //限定查询城市，可以是城市名（中文/中文全拼）、城市编码，默认值为『全国』
-                            extensions: "all" //是否返回公交线路详细信息，默认值为『base』
+                    if(that.line_name == '38' || that.line_name == '38路'){
+                        that.points = JSON.parse(JSON.stringify(structure[0].points));
+                        that.paths = JSON.parse(JSON.stringify(structure[0].paths));
+                        that.lines = JSON.parse(JSON.stringify(structure[0].lines));
+                        that.station_map = JSON.parse(JSON.stringify(structure[0].station_map));
+                        that.stations = JSON.parse(JSON.stringify(structure[0].stations));
+                        that.stations_info = JSON.parse(JSON.stringify(structure[0].stations_info));
+                        that.station_orders =  JSON.parse(JSON.stringify(structure[0].station_orders));
+                        that.renderLayer();
+                        that.saveLine(false);
+                    }
+                    else{
+                        // 借用 API 搜索已有线路
+                        AMap.plugin(["AMap.LineSearch"], function(){
+                            let linesearch = new AMap.LineSearch({
+                                pageIndex: 1, //页码，默认值为1
+                                pageSize: 10, //单页显示结果条数，默认值为20，最大值为50
+                                city: "苏州", //限定查询城市，可以是城市名（中文/中文全拼）、城市编码，默认值为『全国』
+                                extensions: "all" //是否返回公交线路详细信息，默认值为『base』
+                            });
+                            linesearch.search(that.line_name, function(status, result) {
+                                if (status === 'complete' && result.info === 'OK') {
+                                    that.lineSearch_Callback(result);
+                                }
+                            });
                         });
-                        linesearch.search(that.line_name, function(status, result) {
-                            if (status === 'complete' && result.info === 'OK') {
-                                that.lineSearch_Callback(result);
-                            }
-                        });
-                    });
+                    }
                     /*
                     that.$http.get('http://118.25.99.80:9001/edit_line/load',
                         {
@@ -840,7 +1472,6 @@
                                     type: 'warning'
                                 });
                             }
-
                         }
                         //线路不存在
                         else{
@@ -859,7 +1490,7 @@
             isNear(center, pos){
                 let rec = new AMap.LngLat(center[0], center[1]);
                 let cur = new AMap.LngLat(pos[0], pos[1]);
-                return rec.distance(cur) <= 50;
+                return rec.distance(cur) <= 30;
             },
             //填充已建站点信息
             fillInput(){
@@ -885,17 +1516,29 @@
                 }
                 return index
             },
+            isOnLine(pos){
+                let that = this;
+                //从线路点中查找该站点
+                let index = -1;
+                for(let i = 0; i < that.points.length; i++){
+                    if(that.isNear(that.points[i].center, pos.center)){
+                        index = i;
+                        break;
+                    }
+                }
+                return index
+            },
             //绘制六边形
             drawHexagon(){
                 // 每放大一级，距离缩短一倍
                 //console.log(new AMap.LngLat(120.569961,31.354602).distance(new AMap.LngLat(120.572664,31.353283)));
                 let that = this;
-                // let init = [120.1, 31.1, 121.1, 30.8];
+                // let init = [120.23, 31.40, 120.82, 31.15];
                 // let left_top = new AMap.LngLat(init[0], init[1]);
                 // let right_top =  new AMap.LngLat(init[2], init[1]);
                 // let left_bottom = new AMap.LngLat(init[0], init[3]);
                 // let right_bottom =  new AMap.LngLat(init[2], init[3]);
-                // let radius = 0.5;
+                // let radius = 0.1;
                 // let times = radius / 0.3;
                 // let dy = radius * 3;
                 // let dx = radius * Math.sin(Math.PI / 3);
@@ -1006,7 +1649,7 @@
                         stroke: '#FEF867'
                     }
                 });
-                //设置截断点图层样式
+                //设置截断点样式
                 that.layer_cut.setOptions({
                     unit: 'meter',
                     style: {
@@ -1019,8 +1662,12 @@
                 //底图点击事件
                 that.layer_base.on('click', function (ev) {
                     let rawData = ev.rawData;
+                    if(that.op_type != 7){
+                        that.move_status = 0;
+                    }
                     //若为新建线路途径点
                     if(that.op_type == 0){
+                        that.show_station = false;
                         if(that.map.lngLatToContainer(rawData.center).y > 50 && that.map.lngLatToContainer(rawData.center).x > 100){
                             that.points.push(rawData);
                             that.paths.push(rawData.center);
@@ -1044,26 +1691,26 @@
                     }
                     //若为新建站点
                     if(that.op_type == 1){
-                        that.show_station = true;
+                        that.station_index = -1;
                         if(that.map.lngLatToContainer(rawData.center).y > 50 && that.map.lngLatToContainer(rawData.center).x > 100){
                             //如果前面有未保存的站点
                             if(that.current_station != null && that.stations.length > that.stations_info.length){
                                 that.current_station = rawData.center;
                                 //判断该点是否已建
-                                let index =  that.fillInput();
+                                that.station_index =  that.fillInput();
                                 //删去上一个未保存的站点
                                 that.stations.pop();
-                                //如果该点未建，加入到站点中
-                                if(index == -1){
+                                //如果该点未建，插入到合适位置中
+                                if(that.station_index == -1){
                                     that.stations.push(rawData);
                                 }
                             }
                             //如果前面没有未保存的站点
                             else{
                                 that.current_station = rawData.center;
-                                let index =  that.fillInput();
+                                that.station_index =  that.fillInput();
                                 //该点未建，加入到站点中
-                                if(index == -1) that.stations.push(rawData);
+                                if(that.station_index == -1) that.stations.push(rawData);
                             }
                         }
                         //重新渲染站点图层
@@ -1075,43 +1722,199 @@
                         //调整站点信息输入框的位置
                         let pixel = that.map.lngLatToContainer(new AMap.LngLat(rawData.center[0], rawData.center[1]));
                         if(pixel.x > 160){
-                            document.getElementById("station_panel").style.display = 'block';
-                            document.getElementById("station_panel").style.top = (pixel.y - 140) + 'px';
+                            that.show_station = true;
+                            document.getElementById("station_panel").style.top = (pixel.y - 180) + 'px';
                             document.getElementById("station_panel").style.left = (pixel.x - 160) + 'px';
                         }
                     }
                     //若为截断线路
                     if(that.op_type == 6){
                         that.cut_pos = null;
-                        let index = null;
-                        // 找到截断点在线路途径点中的索引
-                        for(let i = 0; i < that.points.length; i++){
-                            if(that.isNear(that.points[i].center, rawData.center)){
-                                that.cut_pos = that.points[i];
-                                index = i;
-                            }
-                            if(index != null){
-                                break;
-                            }
-                        }
+                        that.show_station = false;
+                        let index = that.isOnLine(rawData);
+                        if(index != -1) that.cut_pos = that.points[index];
                         if(that.cut_pos != null){
                             that.processCut(index);
+                        }
+                    }
+                    //若为移动站点
+                    if(that.op_type == 7){
+                        that.show_station = false;
+                        let pixel = that.map.lngLatToContainer(new AMap.LngLat(rawData.center[0], rawData.center[1]));
+                        if(pixel.x <= 160) return;
+                        if(that.move_status == 0){
+                            that.station_index = -1;
+                            that.current_station = rawData.center;
+                            that.station_index = that.fillInput();
+                            if(that.station_index == -1){
+                                that.$message({
+                                    showClose: true,
+                                    message: '请选择已有站点',
+                                    type: 'error'
+                                });
+                            }
+                            else{
+                                that.move_status = 1;
+                                that.$message({
+                                    showClose: true,
+                                    message: '请选择移动后的位置',
+                                    type: 'warning'
+                                });
+                            }
+                        }
+                        else if(that.move_status == 1){
+                            if(that.new_station == null){
+                                that.new_station = rawData.center;
+                                that.current_station = rawData.center;
+                                let if_index = that.fillInput();
+                                if(if_index != -1){
+                                    that.$message({
+                                        showClose: true,
+                                        message: '请选择非站点位置',
+                                        type: 'error'
+                                    });
+                                }
+                                else{
+                                    that.stations[that.station_index] = rawData;
+                                    that.stations_info[that.station_index].center = rawData.center;
+                                    // 重新渲染站点图层
+                                    that.layer_station.setData(that.stations, {
+                                        type: 'json',
+                                        lnglat: 'center'
+                                    });
+                                    that.layer_station.render();
+                                    let add_points = 0;
+                                    let policies = [AMap.DrivingPolicy.LEAST_TIME, AMap.DrivingPolicy.LEAST_FEE, AMap.DrivingPolicy.LEAST_DISTANCE];
+                                    let colors = ["#00FF00", "#D28EFF", "#FFAA33"];
+                                    let via_points = [[], [], []];
+                                    let prev = null, next = null;
+                                    let startLngLat = null, endLngLat = null;
+                                    let via = [];
+                                    if(that.station_index > 0) {
+                                        prev = that.station_map[that.station_index - 1][2];
+                                        startLngLat = that.stations[that.station_index - 1].center;
+                                    }
+                                    if(that.station_index < that.station_map.length - 1){
+                                        next = that.station_map[that.station_index + 1][2];
+                                        endLngLat = that.stations[that.station_index + 1].center;
+                                    }
+                                    if(that.station_index == 0){
+                                        startLngLat = that.stations[that.station_index].center;
+                                    }
+                                    else if(that.station_index == that.station_map.length - 1){
+                                        endLngLat = that.stations[that.station_index].center;
+                                    }
+                                    else{
+                                        via.push(that.stations[that.station_index].center);
+                                    }
+                                    for(let i = 0; i < 3; i++){
+                                        let driving = new AMap.Driving({
+                                            // 驾车路线规划策略，AMap.DrivingPolicy.LEAST_TIME是最快捷模式
+                                            policy: policies[i]
+                                        });
+
+                                        driving.search(startLngLat, endLngLat, {waypoints: via}, function (status, result) {
+                                            via_points[i] = [];
+                                            let arr = [];
+                                            let info = result.routes[0].steps;
+                                            for(let j = 0; j < info.length; j++){
+                                                let center = that.nearestCenter(info[j].start_location);
+                                                via_points[i].push(center);
+                                                arr.push(new AMap.LngLat(center.center[0], center.center[1]));
+                                                if(j == info.length - 1){
+                                                    let end = that.nearestCenter(info[j].end_location);
+                                                    via_points[i].push(end);
+                                                    arr.push(new AMap.LngLat(end.center[0], end.center[1]));
+                                                }
+                                            }
+                                            that.potential_lines[i] = new AMap.Polyline({
+                                                map: that.map,
+                                                path: arr,
+                                                strokeColor: colors[i],//线颜色
+                                                strokeOpacity: 0.8,//线透明度
+                                                isOutline: true,
+                                                outlineColor:'white',
+                                                strokeWeight: 5, //线宽
+                                                zIndex: 120
+                                            });
+                                            that.potential_lines[i].on("click", function(){
+                                                for(let j = 0; j < 3; j++){
+                                                    if(that.potential_lines[j] != null) that.potential_lines[j].hide();
+                                                    that.potential_lines[j] = null;
+                                                }
+                                                if(prev != null && next != null){
+                                                    that.points.splice(prev + 1, next - prev - 1);
+                                                    that.lines.splice(prev, next - prev);
+                                                    that.paths.splice(prev + 1, next - prev - 1);
+                                                }
+                                                else if(prev == null){
+                                                    that.points[0] = that.stations[0];
+                                                    that.paths[0] = that.stations[0].center;
+                                                    that.points.splice(1, next - 1);
+                                                    that.lines.splice(0, next);
+                                                }
+                                                else{
+                                                    that.points[that.points.length - 1] = that.stations[that.stations.length - 1];
+                                                    that.paths[that.paths.length - 1] = that.stations[that.stations.length - 1].center;
+                                                    that.points.splice(prev, that.points.length - prev - 1);
+                                                    that.lines.splice(prev, that.points.length - prev);
+                                                }
+                                                if(prev != null){
+                                                    let start_index = prev;
+                                                    let tag = 0;
+                                                    for(let j = 0; j < via_points[i].length - 1; j++){
+                                                        if(tag == 0 && that.isNear(via_points[i][j].center, that.stations[that.station_index].center)){
+                                                            that.station_map[that.station_index][2] = prev + j;
+                                                            tag = 1;
+                                                        }
+                                                        that.lines.splice(start_index, 0,
+                                                            {'line': [via_points[i][j].center[0] + "," + via_points[i][j].center[1], via_points[i][j + 1].center[0] + "," + via_points[i][j + 1].center[1]]});
+                                                        if(j > 0){
+                                                            that.points.splice(start_index + 1, 0, via_points[i][j]);
+                                                            that.paths.splice(start_index + 1, 0, via_points[i][j].center);
+                                                        }
+                                                        start_index += 1;
+                                                    }
+                                                    add_points = via_points[i].length - 2;
+                                                    for(let i = that.station_index + 1; i < that.station_map.length; i++){
+                                                        that.station_map[i][2] += add_points - (next - prev - 1);
+                                                    }
+                                                }
+                                                else{
+                                                    let start_index = 0;
+                                                    for(let j = 0; j < via_points[i].length - 1; j++){
+                                                        that.lines.splice(start_index, 0,
+                                                            {'line': [via_points[i][j].center[0] + "," + via_points[i][j].center[1], via_points[i][j + 1].center[0] + "," + via_points[i][j + 1].center[1]]});
+                                                        if(j > 0){
+                                                            that.points.splice(start_index + 1, 0, via_points[i][j]);
+                                                            that.paths.splice(start_index + 1, 0, via_points[i][j].center);
+                                                        }
+                                                        start_index += 1;
+                                                    }
+                                                    add_points = via_points[i].length - 2;
+                                                    for(let i = that.station_index + 1; i < that.station_map.length; i++){
+                                                        that.station_map[i][2] += add_points;
+                                                    }
+                                                }
+                                                that.renderLayer();
+                                                that.new_station = null;
+                                                that.move_status = 0;
+                                            });
+                                        })
+                                    }
+                                }
+                            }
                         }
                     }
                 });
                 that.layer_base.render();
             },
-            //隐藏站点信息输入框
-            hideStationInput(){
-                let that = this;
-                that.show_station = false;
-            },
             //点击新建线路按钮
             drawLine(){
                 let that = this;
                 //如果为新建或编辑模式则生效
-                if(that.edit_op || that.modify_op){
-                    that.hideStationInput();
+                if(that.modify_op){
+                    that.show_station = false;
                     that.op_type = 0;
                 }
             },
@@ -1119,12 +1922,12 @@
             drawCircle(){
                 let that = this;
                 //如果为新建或编辑模式则生效
-                if(that.edit_op || that.modify_op){
-                    that.hideStationInput();
+                if(that.modify_op){
+                    that.show_station = false;
                     that.op_type = 1;
                 }
             },
-            saveLine(){
+            saveLine(diff=true){
                 let that = this;
                 // 如果最后一个站点未填信息点击了保存，将该站点删去
                 if(that.current_station != null && that.stations.length > that.stations_info.length){
@@ -1135,110 +1938,24 @@
                     });
                     that.layer_station.render();
                 }
-                let each_station_cost = [];
+                that.each_station_cost = [];
                 //统计每个站点类型的站点数
+                that.station_type_num = [0, 0];
                 for(let i = 0; i < that.stations_info.length; i++){
                     that.station_type_num[that.stations_info[i].type - 1] += 1;
                 }
                 //统计每个类型站点的站点成本
                 for(let i = 0; i < that.station_types.length; i++){
-                    each_station_cost.push({"type": that.station_types[i].type, "cost": that.station_type_cost[i], "num": that.station_type_num[i]})
+                    that.each_station_cost.push({"type": that.station_types[i].type, "cost": that.station_type_cost[i], "num": that.station_type_num[i]})
                 }
-
-                that.poi_select = [false, false, false, false];
-                that.poi_group = [null, null, null, null];
-
-                //poi search
-                AMap.plugin(["AMap.PlaceSearch"], function() {
-                    //构造地点查询类，查询每个站点每一类的POI数
-                    for(let i = 0; i < that.stations_info.length; i++){
-                        for(let j = 0; j < that.types.length; j++){
-                            let placeSearch = new AMap.PlaceSearch({
-                                type: that.types[j], // 兴趣点类别
-                                pageSize: 50, // 单页显示结果条数
-                                pageIndex: 1, // 页码
-                                city: "苏州", // 兴趣点城市
-                                citylimit: true,  //是否强制限制在设置的城市内搜索
-                                //map: that.map, // 展现结果的地图实例
-                                autoFitView: false, // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
-                                showCover: false
-                            });
-                            let cpoint = that.stations_info[i].center; //中心点坐标
-                            placeSearch.searchNearBy(that.keywords[j], cpoint, 500, function(status, result) {
-                                if(status == "complete"){
-                                    let res = result.poiList.pois;
-                                    for(let k = 0; k < res.length; k++){
-                                        that.poi_num += 1;
-                                        that.poi_list[j].num += 1;
-                                        that.poi_list[j].detail.push({"name": res[k].name, "location": [res[k].location.lng, res[k].location.lat]});
-                                    }
-                                }
-                            });
-
-                        }
-                    }
-                });
-                if(that.cut_pos != null){
-                    that.$http.get('http://118.25.99.80:9001/modify/truncation',
-                        {
-                            params: {
-                                line_name: that.line_name,
-                                direction: that.line_direction,
-                                cutoff_point: that.cut_pos.center,
-                                vehicle_num: that.vehicle_num,
-                                vehicle_extra_cost: that.vehicle_extra_cost,
-                                staff_num: that.staff_num,
-                                staff_mean_cost: that.staff_mean_cost,
-                                each_station_cost: each_station_cost,
-                                stations: that.stations_info,
-                                paths: that.paths
-                            }
-                        }).then(function (res){
-                        that.station_cost = res.data.station_cost;
-                        that.total_cost = res.data.total_cost;
-                        that.valid_range = res.data.coverage;
-                        that.population = res.data.population;
-                        that.cut_flow_current = res.data.flow_current;
-                        that.cut_flow_transfer = res.data.flow_transfer;
-                    }, function(){
-                        console.log('请求发送失败');
-                    });
+                if(that.vehicle_num == 0){
+                    that.vehicle_num = that.stations.length - 1;
                 }
-                /*
-                //save line name, line direction and latitude of line
-
-                if(that.modify_op){
-                  that.$http.get('http://118.25.99.80:9001/edit_line/create',
-                      {
-                          params: {
-                              line_name: that.line_name,
-                              direction: that.line_direction,
-                              vehicle_num: that.vehicle_num,
-                              vehicle_extra_cost: that.vehicle_extra_cost,
-                              staff_num: that.staff_num,
-                              staff_mean_cost: that.staff_mean_cost,
-                              each_station_cost: each_station_cost,
-                              stations: that.stations_info,
-                              paths: that.paths
-                          }
-                      }).then(function (res){
-                     that.station_cost = res.data.station_cost;
-                     that.total_cost = res.data.total_cost;
-                     that.valid_range = res.data.coverage;
-                     that.population = res.data.population;
-                  }, function(){
-                     console.log('请求发送失败');
-                  });
-                  that.line_name = '';
-                  that.line_direction = '';
-                  that.edit_op = false;
-                  that.hideStationInput();
-                  that.layer_base.destroy();
-
+                if(that.staff_num == 0){
+                    that.staff_num = 2 * (that.stations.length - 1);
                 }
+                that.poiSearch(diff);
                 that.op_type = -1;
-
-                 */
             },
             //进入预览模式
             viewMap(){
@@ -1246,7 +1963,7 @@
                 if(that.edit_op || that.modify_op){
                     that.edit_op = false;
                     that.modify_op = false;
-                    that.hideStationInput();
+                    that.show_station = false;
                 }
                 if(that.layer_base) that.layer_base.remove();
                 that.op_type = 2;
@@ -1269,7 +1986,133 @@
                     that.op_type = 3;
                 }
             },
+            poiCallBack(result, j){
+                let that = this;
+                let res = result.poiList.pois;
+                for(let k = 0; k < res.length; k++){
+                    that.poi_num += 1;
+                    that.poi_list[j].num += 1;
+                    that.poi_list[j].detail.push({"name": res[k].name, "location": [res[k].location.lng, res[k].location.lat]});
+                }
+            },
             //poi搜索
+            poiSearch(diff){
+                let that = this;
+                let i = 0;
+                that.poi_num = 0;
+                that.poi_select = [false, false, false, false];
+                that.poi_group = [null, null, null, null];
+                that.poi_list = [{type: "公共设施", num: 0, detail: []}, {type: "学校", num: 0, detail: []},
+                    {type: "医院", num: 0, detail: []}, {type: "小区", num: 0, detail: []}];
+                //poi search
+                for(i = 0; i < that.stations_info.length; i++){
+                    for(let j = 0; j < that.types.length; j++){
+                        let placeSearch = new AMap.PlaceSearch({
+                            type: that.types[j], // 兴趣点类别
+                            pageSize: 50, // 单页显示结果条数
+                            pageIndex: 1, // 页码
+                            city: "苏州", // 兴趣点城市
+                            citylimit: true,  //是否强制限制在设置的城市内搜索
+                            //map: that.map, // 展现结果的地图实例
+                            autoFitView: false, // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
+                            showCover: false
+                        });
+                        let cpoint = that.stations_info[i].center; //中心点坐标
+                        placeSearch.searchNearBy(that.keywords[j], cpoint, 100, function(status, result) {
+                            if(status == "complete"){
+                                that.poiCallBack(result, j);
+                            }
+                        });
+                    }
+                }
+                setTimeout(function(){
+                    if(diff){
+                        that.poi_num_change = that.poi_num - that.poi_num_last;
+                        let poi_num_p = that.processAttr(that.poi_num_change);
+                        that.poi_num_change = poi_num_p.str;
+                        document.getElementById('pnc').style.color = poi_num_p.color;
+                        for(let i = 0; i < 4; i++){
+                            that.poi_list_change[i].num = that.poi_list[i].num - that.poi_list_last[i].num;
+                            let poi_list_p = that.processAttr(that.poi_list_change[i].num);
+                            that.poi_list_change[i].num = poi_list_p.str;
+                            document.getElementById('plc' + i).style.color = poi_list_p.color;
+                        }
+                    }
+                    that.poi_num_last = that.poi_num;
+                    that.poi_list_last = that.poi_list;
+                    if(that.cut_pos != null){
+                        that.$http.get('http://118.25.99.80:9001/emulation/modify/truncation',
+                            {
+                                params: {
+                                    line_name: that.line_name,
+                                    direction: that.line_direction,
+                                    cutoff_point: JSON.stringify(that.cut_pos.center),
+                                    vehicle_num: that.vehicle_num,
+                                    vehicle_extra_cost: that.vehicle_extra_cost,
+                                    staff_num: that.staff_num,
+                                    staff_mean_cost: that.staff_mean_cost,
+                                    each_station_cost: JSON.stringify(that.each_station_cost),
+                                    stations: JSON.stringify(that.stations_info),
+                                    paths: JSON.stringify(that.paths),
+                                    POI: JSON.stringify(that.poi_list)
+                                }
+                            }).then(function (res){
+                            that.station_cost = res.data.station_cost;
+                            that.total_cost = res.data.total_cost;
+                            that.valid_range = (res.data.coverage / 1000000).toFixed(2);
+                            that.population = (res.data.population / 10000).toFixed(2);
+                            that.flow_prev = Math.floor(res.data.flow_prev);
+                            that.flow_current = Math.floor(res.data.flow_current);
+                            that.flow_decrease = Math.floor(res.data.flow_decrease);
+                            that.flow_impact = Math.floor(res.data.flow_impact);
+                            that.flow_rate = res.data.flow_rate;
+                            //that.flow_rate = res.data.flow_rate.toFixed(2);
+                            if(that.editFlow) that.editFlow = false;
+                            that.cutFlow = true;
+                            if(diff) that.calDiff();
+                            that.recordData();
+                        }, function(){
+                            console.log('请求发送失败');
+                        });
+                    }
+                    //save line name, line direction and latitude of line
+
+                    else{
+                        that.$http.get('http://118.25.99.80:9001/emulation/modify/station',
+                            {
+                                params: {
+                                    line_name: that.line_name,
+                                    direction: that.line_direction,
+                                    vehicle_num: that.vehicle_num,
+                                    vehicle_extra_cost: that.vehicle_extra_cost,
+                                    staff_num: that.staff_num,
+                                    staff_mean_cost: that.staff_mean_cost,
+                                    each_station_cost: JSON.stringify(that.each_station_cost),
+                                    stations: JSON.stringify(that.stations_info),
+                                    paths: JSON.stringify(that.paths),
+                                    POI: JSON.stringify(that.poi_list)
+                                }
+                            }).then(function (res){
+                            that.station_cost = res.data.station_cost;
+                            that.total_cost = res.data.total_cost;
+                            that.valid_range = (res.data.coverage / 1000000).toFixed(2);
+                            that.population = (res.data.population / 10000).toFixed(2);
+                            that.flow_prev = Math.floor(res.data.flow_prev);
+                            that.flow_current = Math.floor(res.data.flow_current);
+                            that.flow_decrease = Math.floor(res.data.flow_decrease);
+                            that.flow_rate = res.data.flow_rate;
+                            //that.flow_rate = res.data.flow_rate.toFixed(2);
+                            if(that.cutFlow) that.cutFlow = false;
+                            that.editFlow = true;
+                            if(diff) that.calDiff();
+                            that.recordData();
+                        }, function(){
+                            console.log('请求发送失败');
+                        });
+                        that.show_station = false;
+                    }
+                }, 3000);
+            },
             poiSelect(num){
                 let that = this;
                 //改变按钮状态
@@ -1417,9 +2260,8 @@
     height: 46px;
   }
   .op_station{
-    display: none;
-    width: 200px;
-    height: 105px;
+    width: 230px;
+    height: 130px;
     position: absolute;
     top: 10px;
     left: 40px;
@@ -1427,7 +2269,7 @@
     z-index: 300;
   }
   .edit_title{
-    width: 180px;
+    width: 210px;
     height: 30px;
     position: absolute;
     top: 0;
@@ -1444,6 +2286,13 @@
     position: absolute;
     top: 3px;
     right: 10px;
+    width: 30px;
+  }
+  .station_remove{
+    position: absolute;
+    top: 3px;
+    right: 70px;
+    width: 30px;
   }
   .name_label{
     font-size: 60%;
@@ -1454,7 +2303,7 @@
   }
   .station_input{
     position: absolute;
-    right: 10px;
+    right: 35px;
     top: 40px;
     width: 140px;
   }
@@ -1463,11 +2312,32 @@
     color: #fff;
     position: absolute;
     left: 10px;
+    top: 70px;
+  }
+  .insert_label{
+    font-size: 60%;
+    color: #fff;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+  }
+  .insert_label_app{
+    font-size: 60%;
+    color: #fff;
+    position: absolute;
+    right: 10px;
     bottom: 10px;
   }
   .select_type{
     position: absolute;
-    right: 10px;
+    right: 35px;
+    top: 70px;
+    width: 140px;
+    background-color: #152534;
+  }
+  .select_order{
+    position: absolute;
+    right: 35px;
     bottom: 10px;
     width: 140px;
     background-color: #152534;
@@ -1509,7 +2379,7 @@
   }
   .right{
     display: inline-block;
-    width: 35%;
+    width: 40%;
     text-align: right;
   }
   .label{
@@ -1533,6 +2403,26 @@
     top: 600px;
     right: 50px;
     width: 420px;
+    height: 200px;
+    z-index: 100;
+  }
+  .flow_title{
+    width: 260px;
+    padding: 0 10px;
+    height: 36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    line-height: 36px;
+    background-color: #1B7189;
+    font-size: 80%;
+  }
+  .flow_panel{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 260px;
     height: 200px;
     z-index: 100;
   }
