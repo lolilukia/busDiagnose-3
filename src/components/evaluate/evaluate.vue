@@ -463,7 +463,9 @@
             that.weekly_index_options.series[0].data = weekly;
             that.wChart.setOption(that.weekly_index_options);
         });
-        this.$http.get('http://118.25.99.80:9001/evaluate/week?line_name=' + that.road_name).then(function(ret){
+        let week_day = that.basis_date[0].getDay() || 7;
+        let timestamp = new Date(that.basis_date[0].getFullYear(), that.basis_date[0].getMonth(), that.basis_date[0].getDate() + 1 - week_day).getTime();
+        this.$http.get('http://118.25.99.80:9001/evaluate/week?line_name=' + that.road_name + '&time=' + timestamp).then(function(ret){
           that.roadIndexDataRefer = ret.data;
           that.roadIndexData = ret.data.slice(0, 5);
         });

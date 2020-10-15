@@ -146,10 +146,10 @@
             </div>
             <div class="middle" style="position: relative;">
               <span style="position: absolute; top:0; right: 30px; z-index: 100;" id="vc">{{vehicle_change}}</span>
-              <el-input v-model="vehicle_num"></el-input>
+              <el-input v-model="vehicle_num" @change="saveLine"></el-input>
             </div>
             <div class="right">
-              <el-input v-model="vehicle_extra_cost"></el-input>
+              <el-input v-model="vehicle_extra_cost" @change="saveLine"></el-input>
             </div>
           </div>
           <div class="odd">
@@ -169,10 +169,10 @@
             </div>
             <div class="middle" style="position: relative;">
               <span style="position: absolute; top:0; right: 30px; z-index: 100;" id="sc">{{staff_change}}</span>
-              <el-input v-model="staff_num"></el-input>
+              <el-input v-model="staff_num" @change="saveLine"></el-input>
             </div>
             <div class="right">
-              <el-input v-model="staff_mean_cost"></el-input>
+              <el-input v-model="staff_mean_cost" @change="saveLine"></el-input>
             </div>
           </div>
           <div class="odd">
@@ -195,7 +195,7 @@
               <span style="position: absolute; top:0; right: 30px; z-index: 100;" :id="'stnc' + index">{{station_type_num_change[index]}}</span>
             </div>
             <div class="right">
-              <el-input v-model="station_type_cost[index]"></el-input>
+              <el-input v-model="station_type_cost[index]" @change="saveLine"></el-input>
             </div>
           </div>
           <div class="even">

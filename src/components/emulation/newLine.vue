@@ -111,10 +111,10 @@
               <span class="label"></span>
             </div>
             <div class="middle">
-              <el-input v-model="vehicle_num"></el-input>
+              <el-input v-model="vehicle_num" @change="saveLine"></el-input>
             </div>
             <div class="right">
-              <el-input v-model="vehicle_extra_cost"></el-input>
+              <el-input v-model="vehicle_extra_cost" @change="saveLine"></el-input>
             </div>
           </div>
           <div class="odd">
@@ -133,10 +133,10 @@
               <span class="label"></span>
             </div>
             <div class="middle">
-              <el-input v-model="staff_num"></el-input>
+              <el-input v-model="staff_num" @change="saveLine"></el-input>
             </div>
             <div class="right">
-              <el-input v-model="staff_mean_cost"></el-input>
+              <el-input v-model="staff_mean_cost" @change="saveLine"></el-input>
             </div>
           </div>
           <div class="odd">
@@ -158,7 +158,7 @@
               <span class="label">{{station_type_num[index]}}</span>
             </div>
             <div class="right">
-              <el-input v-model="station_type_cost[index]"></el-input>
+              <el-input v-model="station_type_cost[index]" @change="saveLine"></el-input>
             </div>
           </div>
           <div class="even">

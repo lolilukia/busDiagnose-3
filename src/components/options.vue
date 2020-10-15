@@ -386,10 +386,10 @@
       nameGap: 5,
       indicator: [
         { name: '可靠性', max: 100},
-        { name: '韧性', max: 100},
-        { name: '供需平衡性', max: 100},
-        { name: '安全性', max: 100},
-        { name: '迅速性', max: 100}
+        { name: '快捷性', max: 100},
+        { name: '舒适性', max: 100},
+        { name: 'BMI指数', max: 100},
+        { name: '韧性', max: 100}
       ],
       axisLine:{
         show: false
@@ -474,7 +474,7 @@
       left: 'center',
       top: 'center',
       style:{
-        text: '迅速性',
+        text: '快捷性',
         x: 100,
         y: 100,
         textAlign: 'center',
@@ -485,7 +485,7 @@
     color: ['#fbbf0b', '#0b4a5e'],
     series: [
       {
-        name: '迅速性',
+        name: '快捷性',
         type:'pie',
         radius: ['50%', '70%'],
         avoidLabelOverlap: false,
@@ -520,7 +520,7 @@
       left: 'center',
       top: 'center',
       style:{
-        text: '安全性',
+        text: '舒适性',
         x: 100,
         y: 100,
         textAlign: 'center',
@@ -531,7 +531,7 @@
     color: ['#c19559', '#0b4a5e'],
     series: [
       {
-        name: '安全性',
+        name: '舒适性',
         type:'pie',
         radius: ['50%', '70%'],
         avoidLabelOverlap: false,
@@ -566,7 +566,7 @@
       left: 'center',
       top: 'center',
       style:{
-        text: '韧性',
+        text: 'BMI指数',
         x: 100,
         y: 100,
         textAlign: 'center',
@@ -577,7 +577,7 @@
     color: ['#269ddc', '#0b4a5e'],
     series: [
       {
-        name: '韧性',
+        name: 'BMI指数',
         type:'pie',
         radius: ['50%', '70%'],
         avoidLabelOverlap: false,
@@ -612,7 +612,7 @@
       left: 'center',
       top: 'center',
       style:{
-        text: '供需平衡性',
+        text: '韧性',
         x: 100,
         y: 100,
         textAlign: 'center',
@@ -623,7 +623,7 @@
     color: ['#e01568', '#0b4a5e'],
     series: [
       {
-        name: '供需平衡性',
+        name: '韧性',
         type:'pie',
         radius: ['50%', '70%'],
         avoidLabelOverlap: false,
